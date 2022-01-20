@@ -1,22 +1,32 @@
 <template>
-  <div class="observer"></div>
+  <div class="observer" ref="el"></div>
 </template>
-
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import { useStore } from "vuex";
-
 export default defineComponent({
   setup() {
     const store = useStore();
-    let observer = new IntersectionObserver(([entry]) => {
-      entry && entry.isIntersecting;
-      let nextPage = (store.state.page += 1);
-      store.dispatch("nextPage");
+    const el = ref();
+    onMounted(() => {
+      let observer = new IntersectionObserver(([entry]) => {
+        entry && entry.isIntersecting;
+        let nextPage = (store.state.page += 1);
+        store.dispatch("nextPage");
+        console.log("hello");
+      });
+      observer.observe(el.value);
     });
-    observer.observe(this.$el);
+    return {
+      el,
+    };
   },
 });
 </script>
-
-<style></style>
+<style lang="scss">
+.observer {
+  position: absolute;
+  bottom: 0;
+}
+</style>
+-->

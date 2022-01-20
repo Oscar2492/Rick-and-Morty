@@ -4,8 +4,7 @@
       <div class="cpersons__item" v-for="person in persons" :key="person.id">
         <CardPerson :person="person" />
       </div>
-      <!-- <Observer /> -->
-      <!-- <infinite-loading @infinite="infiniteHandler"/> -->
+      <Observer />
     </div>
   </section>
 </template>
@@ -14,15 +13,13 @@
 import { onMounted, computed, defineComponent } from "vue";
 import { useStore } from "vuex";
 import CardPerson from "@/components/CardPerson.vue";
-// import Observer from "@/components/Observer.vue";
-// import InfiniteLoading from "vue-infinite-loading";
+import Observer from "@/components/Observer.vue";
 
 //defineComponent con esto coge los tipos
 export default defineComponent({
   components: {
     CardPerson,
-    // Observer,
-    // InfiniteLoading,
+    Observer,
   },
   setup() {
     const store = useStore();
@@ -30,17 +27,12 @@ export default defineComponent({
       return store.state.personsFilter;
     });
 
-    // const infiniteHandler = (page: number) => {
-    //   if (store.state.personsFilter.length) {
-    //     store.dispatch("nextPage", page);
-    //   }
-    // };
+   
 
     onMounted(() => {
       store.dispatch("getPersons");
     });
     return {
-      // infiniteHandler,
       persons,
     };
   },

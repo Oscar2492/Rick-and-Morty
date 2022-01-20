@@ -38,14 +38,14 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 h1 {
-  margin-bottom: 3rem;
+  margin-bottom: 48px;
   text-align: center;
   font-size: 80px;
 }
 .container {
   width: 980px;
   max-width: 90%;
-  margin: 5rem auto;
+  margin: 80px auto;
 }
 img {
   width: 100%;

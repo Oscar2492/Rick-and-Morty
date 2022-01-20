@@ -47,9 +47,12 @@ export default createStore({
       const nextpage = () => {
         if (this.state.personsFilter.length) {
           this.getters.page += 1;
+          this.state.personsFilter.push();
         }
+        commit("setPersonsFilter", nextpage);
         commit("setPage", nextpage);
       };
+      return this.dispatch("getPersons");
     },
   },
   modules: {},
