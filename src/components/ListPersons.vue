@@ -1,33 +1,29 @@
 <template>
-  <section>
-    <div class="persons">
-      <div class="cpersons__item" v-for="person in persons" :key="person.id">
-        <CardPerson :person="person" />
-      </div>
-      <Observer />
+  <div class="persons">
+    <div class="cpersons__item" v-for="person in persons" :key="person.id">
+      <CardPerson :person="person" />
     </div>
-  </section>
+    <!-- <Observer /> -->
+  </div>
 </template>
 
 <script lang="ts">
 import { onMounted, computed, defineComponent } from "vue";
 import { useStore } from "vuex";
 import CardPerson from "@/components/CardPerson.vue";
-import Observer from "@/components/Observer.vue";
+// import Observer from "@/components/Observer.vue";
 
 //defineComponent con esto coge los tipos
 export default defineComponent({
   components: {
     CardPerson,
-    Observer,
+    // Observer,
   },
   setup() {
     const store = useStore();
     const persons = computed(() => {
       return store.state.personsFilter;
     });
-
-   
 
     onMounted(() => {
       store.dispatch("getPersons");

@@ -1,5 +1,5 @@
 <template>
-  <div class="observer" ref="el"></div>
+  <div class="observer" ref="el"/>
 </template>
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
@@ -12,6 +12,7 @@ export default defineComponent({
       let observer = new IntersectionObserver(([entry]) => {
         entry && entry.isIntersecting;
         let nextPage = (store.state.page += 1);
+
         store.dispatch("nextPage");
         console.log("hello");
       });
@@ -23,8 +24,11 @@ export default defineComponent({
   },
 });
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .observer {
+  width: 100px;
+  height: 100px;
+  background-color: aqua;
   position: absolute;
   bottom: 0;
 }

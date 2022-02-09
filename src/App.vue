@@ -2,6 +2,7 @@
   <div class="container">
     <h1>Rick and Morty</h1>
     <FilterByStatus />
+    <FilterByLocations />
     <ListPersons />
   </div>
 </template>
@@ -9,13 +10,15 @@
 <script lang="ts">
 import ListPersons from "./components/ListPersons.vue";
 import FilterByStatus from "./components/FilterByStatus.vue";
+import FilterByLocations from "./components/FilterByLocations.vue";
 
 export default {
   name: "App",
   components: {
     ListPersons,
     FilterByStatus,
-  },
+    FilterByLocations
+},
 };
 </script>
 
