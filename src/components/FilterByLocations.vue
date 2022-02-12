@@ -1,5 +1,6 @@
 <template>
   <div class="filter">
+<span>Locations:  </span>
     <select
       @change="filterLocation(selectedValue)"
       v-model="selectedValue"
